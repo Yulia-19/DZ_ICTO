@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR з декількома маркерами</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="debugUIEnabled: false;">
+        <!-- Перший маркер - Hiro -->
+        <a-marker preset="hiro">
+            <a-entity rotation="-90 0 0" scale="0.2 0.2 0.2">
+                <!-- Складна модель -->
+                <a-entity position="0 0 0">
+                    <a-torus position="-2 1 -5" color="#FFD700" radius="1.2"></a-torus>
+                    <a-cylinder position="2 -1 -5" radius="0.5" height="1.5" color="#00BFFF"></a-cylinder>
+                    <a-sphere position="0 1 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+                </a-entity>
+            </a-entity>
+        </a-marker>
+        
+        <!-- Другий маркер - Kanji -->
+        <a-marker preset="kanji">
+            <a-sphere radius="0.5" color="white" position="0 0.5 0"></a-sphere>
+        </a-marker>
+        
+        <a-marker type="pattern" url="cube.patt">
+              <a-box radius="0.5" color="white" position="0 0.5 0"></a-sphere>
+        </a-marker>
+        <a-marker type="pattern" url="prism.patt">
+                <a-entity geometry="primitive: cylinder; radius: 0.3; height: 0.7; segmentsRadial: 6"
+                material="color: green; opacity: 0.9"
+                position="0 1 -2"
+                rotation="90 0 0">
+      </a-entity>
+        </a-marker>
+        <!-- Камера -->
+        <a-entity camera></a-entity>
+        <a-camera-static/>
+    </a-scene>
+</body>
+</html>
